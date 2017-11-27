@@ -74,7 +74,7 @@
         </div>
         <div style='background-color:#7c8fa2 '>
     		<ul class='bottoms'>
-    			<li v-for='(path,index) in navs' @click='item_detail(index)'>
+    			<li v-for='(path,index) in navs' @click='item_detail(index)' :class='{bottoms_bg:bottoms_cont==index}'>
     				<a href="javascript:void(null)">{{path.title}}</a>
     			</li>
     		</ul>
@@ -240,8 +240,6 @@
                 }
 			}
 			.pt10{
-/*        		width: 180px;
-        		height: 110px;*/
             	.cm_icon{
             		display: inline-block;
             		width: 100px;
@@ -273,9 +271,15 @@
 					color:white;
 				}
 				&:hover{
-					background-color: #333
+					background-color:#8da1b5
 				}
 			}
+            .bottoms_bg{
+                background-color: #c0d2e4;
+                a{
+                    color: #333
+                }
+            }
 		}
 		.footer_copy{
 			width: 100%;
@@ -375,7 +379,8 @@
 
 				],
                 detail_show:'',
-                bottom_con:[]
+                bottom_con:'',
+                bottoms_cont:''-1
 			}
 		},
         methods:{
@@ -383,6 +388,7 @@
                 this.detail_show=true
             },
             item_detail:function(index){
+                this.bottoms_cont=index
                 var bottom_con=document.getElementsByClassName('bottom_con');
                 this.bottom_con=bottom_con;
                 for(var i=0;i<this.bottom_con.length;i++){

@@ -215,7 +215,7 @@
 		.bottom{
 			width:1200px;
 		    height:40px;
-			background: #2064c8;
+			/*background: #2064c8;*/
 			text-align: center;
 			line-height: 40px;
 			margin: 0 auto;
@@ -233,6 +233,7 @@
 						height:100%;
 						display: inline-block;
 						border-right:1px solid #3774ce;
+						background: #2064c8;
 						a{
 							display: inline-block;
 							width: 100%;
@@ -279,7 +280,7 @@
 					 {path:'/zhuce',title:'注册'},
                      {path:'/denglv',title:'登陆'},
 				],
-				cont:-1,
+				cont:'',
 		    }
 		},
 		methods:{

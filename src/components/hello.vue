@@ -16,81 +16,239 @@
                </div>
                <div class="controller">  
                    <ul class="left">
-                       <li v-for='(item,index) in arr_controller'>
+                       <li v-for='(item,index) in arr_controller' @click='controller_show(index)' :class='{controller_bg:controller_conts==index}'>
                            {{item}}
                        </li>
                    </ul>
-                   <div class="box">
-                   <ul class="right">
-                       <div class="hotel_right">
-                            <b @click='china_show' :class='{bor:china_shows==true}'>国内酒店</b> <b @click='china_out_show' :class='{bor:china_out_shows==true}'>国际酒店</b>
-                        </div>
-                       <li class="controller_show" v-show='china_shows'>  
-                           <dl>
-                               <dt>目的地</dt>
-                               <dd class='long'><input type='text' value='黄山市'></dd>
-                           </dl>
-                           <dl>
-                               <dt>入住</dt>
-                               <dd class='short'>
-                                   <label>
-                                       <input type='date' value='2017-11-23'>
-                                       <i></i>
-                                   </label>
-                               </dd>
-                               <dt class='last_dt'>退房</dt>
-                               <dd class='short'>
-                                   <label>
-                                       <input type='date' value='2017-11-24'>
-                                       <i></i>
-                                   </label>
-                               </dd>
-                           </dl>
-                           <dl>
-                               <dt>关键词</dt>
-                               <dd class='long'>
-                                   <input type='text' placeholder="如位置\酒店名\品牌">
-                               </dd>
-                           </dl>
-                           <div class="submit_warp">
-                               <span class='sosuo'>搜索</span>
-                               <span class='map'>地图搜索</span>
-                           </div>
-                       </li>
-                       <li class="controller_show" v-show='china_out_shows'>  
-                           <dl>
-                               <dt>目的地</dt>
-                               <dd class='long'><input type='text' value='首尔'></dd>
-                           </dl>
-                           <dl>
-                               <dt>入住</dt>
-                               <dd class='short'>
-                                   <label>
-                                       <input type='date' value='2017-11-23'>
-                                       <i></i>
-                                   </label>
-                               </dd>
-                               <dt class='last_dt'>退房</dt>
-                               <dd class='short'>
-                                   <label>
-                                       <input type='date' value='2017-11-24'>
-                                       <i></i>
-                                   </label>
-                               </dd>
-                           </dl>
-                           <dl>
-                               <dt>关键词</dt>
-                               <dd class='long'>
-                                   <input type='text' placeholder="如圈子\酒店名\品牌">
-                               </dd>
-                           </dl>
-                           <div class="submit_warp">
-                               <span class='sosuo'>搜索</span>
-                           </div>
-                       </li> 
-                   </ul>
+                   <div class="box controller_box">
+                       <ul class="right">
+                           <div class="hotel_right">
+                                <b @click='china_show' :class='{bor:china_shows==true}'>国内酒店</b> <b @click='china_out_show' :class='{bor:china_out_shows==true}'>国际酒店</b>
+                            </div>
+                           <li class="controller_show" v-show='china_shows'>  
+                               <dl>
+                                   <dt>目的地</dt>
+                                   <dd class='long'><input type='text' value='黄山市'></dd>
+                               </dl>
+                               <dl>
+                                   <dt>入住</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-23'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'>退房</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-24'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>关键词</dt>
+                                   <dd class='long'>
+                                       <input type='text' placeholder="如位置\酒店名\品牌">
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                                   <span class='map'>地图搜索</span>
+                               </div>
+                           </li>
+                           <li class="controller_show" v-show='china_out_shows'>  
+                               <dl>
+                                   <dt>目的地</dt>
+                                   <dd class='long'><input type='text' value='首尔'></dd>
+                               </dl>
+                               <dl>
+                                   <dt>入住</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-23'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'>退房</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-24'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>关键词</dt>
+                                   <dd class='long'>
+                                       <input type='text' placeholder="如圈子\酒店名\品牌">
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                               </div>
+                           </li> 
+                       </ul>
+                   </div>
+                   <div class="box return_type controller_box" style='display: none;'>
+                       <ul class="right">
+                           <div class="hotel_right">
+                                <b @click='china_show' :class='{bor:china_shows==true}'>国内机票</b> <b @click='china_out_show' :class='{bor:china_out_shows==true}'>国际机票</b>
+                            </div>
+                           <li class="controller_show" v-show='china_shows'>  
+                               <dl>
+                                   <dt>航类型</dt>
+                                   <dd>单程</dd>
+                               </dl>
+                               <dl>
+                                   <dt>往返城</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='北京'>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'><i><=></i></dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='上海'>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>去程</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-25'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'>返程</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value="yyyy-mm-dd">
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                               </div>
+                           </li>
+                           <li class="controller_show" v-show='china_out_shows'>  
+                               <dl>
+                                   <dt>航类型</dt>
+                                   <dd>单程</dd>
+                               </dl>
+                               <dl>
+                                   <dt>往返城</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='北京'>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'><i><=></i></dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='香港'>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>去程</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-28'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'>返程</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value="2017-11-30">
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                               </div>
+                           </li>
+                       </ul>
+                   </div>
+                   <div class="box controller_box" style='margin-top: 20px;display: none'>
+                       <ul class="right">
+                           <li class="controller_show" v-show='china_shows'>  
+                               <dl>
+                                   <dt>往返城</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='北京'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'><i><=></i></dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='text' value='上海'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>往返日</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-25'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                               </div>
+                           </li>
+                           <li class="controller_show" v-show='china_out_shows'>  
+                               <dl>
+                                   <dt>目的地</dt>
+                                   <dd class='long'><input type='text' value='首尔'></dd>
+                               </dl>
+                               <dl>
+                                   <dt>入住</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-23'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                                   <dt class='last_dt'>退房</dt>
+                                   <dd class='short'>
+                                       <label>
+                                           <input type='date' value='2017-11-24'>
+                                           <i></i>
+                                       </label>
+                                   </dd>
+                               </dl>
+                               <dl>
+                                   <dt>关键词</dt>
+                                   <dd class='long'>
+                                       <input type='text' placeholder="如圈子\酒店名\品牌">
+                                   </dd>
+                               </dl>
+                               <div class="submit_warp">
+                                   <span class='sosuo'>搜索</span>
+                               </div>
+                           </li> 
+                       </ul>
+                   </div>
+                   <div class="box controller_box" style='display: none;'>
+                       <ul class="right">
+                           <li class="controller_show" v-show='china_shows'>  
+                              <img src="../assets/image/mobile_bg.png">
+                           </li> 
+                       </ul>
                    </div>
                </div>
+                   
             </div>
             <!-- 酒店 -->
             <div class="hotel_box">
@@ -490,13 +648,19 @@ h3{
                     line-height: 60px;
                     text-align: center; 
                     border-right: 1px solid #e1e1e1;
-                    background-color:#f3f3f3; 
-                }
-                li:nth-of-type(1),li:nth-of-type(2){
+                    background-color:#f3f3f3;
                     border-bottom: 1px solid #e1e1e1;
+                }
+                li:nth-of-type(4){
+                    border-bottom: 0;
+                }
+                .controller_bg{
+                    border-right: 0;
+                    background-color: white;
                 }
             }
             .box{
+                cursor: pointer;
                 margin:0 auto;
                 width: 440px;
                 height: 257px;
@@ -510,8 +674,7 @@ h3{
                         border-bottom: 2px solid #aaa;
                         b{
                             width: 90px;
-                            height: 32px;
-                           
+                            height: 32px; 
                             float: left;
                         }
                         .bor{
@@ -527,7 +690,7 @@ h3{
                         margin-left:8px;
                     }
                     input:focus{
-                        border:0;/*这里你可以自己调节边框样式*/
+                        border:0;
                         outline: none;
                     }
                     .controller_show{
@@ -581,16 +744,18 @@ h3{
                         .submit_warp{
                             width: 280px;
                             height: 32px;
-                            padding-left:58px;
                             margin-top: 20px;
+                            margin-left:66px;
+                            text-align: left;
                             span{
                                 display: inline-block;
                                 height: 32px;
                                 border-radius: 4px;
                                 line-height: 32px;
+                                text-align: center;
                             }
                             .sosuo{
-                                width: 159px;
+                                width: 158px;
                                 background-color: #f55;
                                 color: white;
                                 font-size:16px;
@@ -1033,7 +1198,7 @@ import Bana from '../assets/image/ban1.jpg'
     import point3 from '../assets/image/17072893.jpg'
     import point4 from '../assets/image/17051704.jpg'   
     import point5 from '../assets/image/17080254.jpg'
-    import point6 from '../assets/image/17030505.jpg' 
+import point6 from '../assets/image/17030505.jpg' 
     export default{
         name:'Hello',
         data() {  
@@ -1047,11 +1212,13 @@ import Bana from '../assets/image/ban1.jpg'
                 cont_themesss:0,
                 cont:-1,
                 wrap1_show:false,
+                controller_cont:'',
+                controller_conts:'',
                 t1:'',
                 cont_point:0,
                 china_shows:true,
                 china_out_shows:false,
-                arr_controller:['酒店','手机版','','',''],
+                arr_controller:['酒店','机票','火车票','手机版',''],
                 arr_h:[
                     {src:H1,title:'园林酒店'},
                     {src:H2,title:'情侣酒店'},
@@ -1274,20 +1441,19 @@ import Bana from '../assets/image/ban1.jpg'
                 this.china_shows=false;
                 this.china_out_shows=true;
             },
-            input_value:function(){
-                const input_all=document.getElementsByTagName('input');
-                for(var i=0;i<input_all.length;i++){
-                    console.log(input_all[i]);
-                    input_all[i].onfocus=function(){
-                        console.log(this)
-                    }
+            controller_show:function(index){
+                this.controller_conts=index
+                const controller_cont=document.getElementsByClassName('controller_box')
+                this.controller_cont=controller_cont;
+                for(var i=0;i<controller_cont.length;i++){
+                    this.controller_cont[i].style.display='none'
                 }
+                this.controller_cont[index].style.display='block';
             }
         },
         mounted () {  
             this.move(),
-            this.move1(),
-            this.input_value()
+            this.move1()
         }  
 
 
